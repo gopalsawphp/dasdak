@@ -1,0 +1,42 @@
+{
+  "name": "interview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app_hooked.js"
+  },
+  "author": "Gopal",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.2.5",
+    "await": "^0.2.6",
+    "babel-preset-es2015-node6": "^0.4.0",
+    "babel-register": "^6.26.0",
+    "based-blob": "^1.0.1",
+    "body-parser": "^1.19.0",
+    "canvas": "^2.6.1",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "html-pdf": "^2.2.0",
+    "i": "^0.3.6",
+    "image-to-blob": "^0.2.0",
+    "jsbarcode": "^3.11.0",
+    "jsonwebtoken": "^8.5.1",
+    "mustache": "^4.0.1",
+    "nodemailer": "^6.4.11",
+    "nodemon": "^2.0.4",
+    "npm": "^6.14.8",
+    "path": "^0.12.7",
+    "pdf-image": "^2.0.0",
+    "pg": "^8.3.3",
+    "simple-crypto-js": "^3.0.0"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}

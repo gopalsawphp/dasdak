@@ -1,0 +1,60 @@
+ //=================Sports=================================
+
+create table if not exists m_users(
+    id serial primary key not null,
+	phone_number varchar(15) unique not null,
+	fullname varchar(70) not null,
+	username varchar(100) unique not null,
+	hash text not null,
+	salt text not null,
+	create_on timestamp,
+	active boolean default false,
+	role_type integer not null default 1,
+	email varchar(80) unique not null,
+	first_name varchar(50) not null,
+	last_name varchar(50) not null,
+	last_login timestamp null,
+	signup_token varchar(255) null,
+	forget_password_token varchar(255) null,
+	forget_password_status boolean null
+ )
+ 
+ 
+create table if not exists m_customer(
+    id serial primary key not null,
+	first_name varchar(50) not null,
+	last_name varchar(50) not null,
+	email varchar(80) unique not null,
+	zip_code varchar(8) not null,
+	no_of_guests integer default 0,
+	free_season_ticket boolean default false,
+	free_redskins boolean default false,
+	special_offers boolean default false,
+	free_redskins_salute boolean default false,
+	create_on timestamp default now()
+ )
+ 
+
+create table if not exists m_guests(
+    gid serial primary key not null,
+	 user_id integer REFERENCES m_customer(id) not null,
+	first_name varchar(50) not null,
+	last_name varchar(50) not null,
+	email varchar(80) not null
+ )
+ //All Error log manage in this Table
+ create table if not exists t_error_logs(
+         elid serial primary key not null,
+	 error_type_id integer not null,
+	 error_title text not null,
+	 error_detail text null,
+	error_date timestamp not null
+   )
+ 
+ 
+ 
+ 
+ 
+ 
+  insert into m_customer(first_name,last_name,email,zip_code,no_of_guests,special_offers,free_season_ticket)
+ values('Ramesh','Prasad','ramesh@gmail.com','56786',6,true,true)

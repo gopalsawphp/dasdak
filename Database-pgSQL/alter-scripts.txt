@@ -1,0 +1,6 @@
+
+01. alter table m_users
+ add column gender varchar(15) not null
+
+
+ 

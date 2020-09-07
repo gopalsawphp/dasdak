@@ -1,0 +1,61 @@
+
+
+
+
+  <div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+      <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="row">
+              <div class="col-md-3 custom-col-right web-screen"> </div>
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <img class="logoInLogin" src="../assets/images/DasdakCodingTestLogo.png">
+                    <h1 class="h4 text-gray-900 mb-4 color-white"> DASDAK SIGNIN !</h1>
+                  </div>
+                  <form [formGroup]="signin" (ngSubmit)="onSubmit()" novalidate>
+                    <div class="pb-1 row">
+                      <mat-form-field style="width: 100%">
+                        <input matInput placeholder="Username"  formControlName="username">
+                        <mat-error *ngIf="!signin.controls.username.valid && signin.controls['username'].touched">
+                            <span class="errorColor" *ngIf="signin.controls.username.errors?.required">
+                                Username is required.
+                          </span>
+                            </mat-error>
+                      </mat-form-field>
+                    
+                    </div>
+                    <div class="pb-1 row">
+                      <mat-form-field style="width: 100%">
+                        <input matInput type="password" placeholder="Password" formControlName="password">
+                        <mat-error *ngIf="!signin.controls.password.valid && signin.controls['password'].touched">
+                            <span class="errorColor" *ngIf="signin.controls.password.errors?.required">
+                                Password is required.
+                          </span>
+                        </mat-error>
+                      </mat-form-field>
+                    
+                    </div>
+                   
+                    <button style="margin-top: 15px!important;" mat-flat-button class="site-button"  type="submit" [disabled]="!signin.valid"><span class="material-icons">
+                      subdirectory_arrow_right
+                      </span> {{loginText}}</button>
+                </form>
+                  <hr>
+                
+                  <div class="text-center">
+                    <a class="small" routerLink="/signup">Create an Account!</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3 custom-col-right web-screen"> </div>
+          </div>
+        </div>
+
+      
+
+  </div>

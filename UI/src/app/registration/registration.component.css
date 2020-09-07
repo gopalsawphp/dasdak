@@ -1,0 +1,39 @@
+.green-snackbar {
+    background-color: green!important;
+    color: lightgoldenrodyellow;
+  }
+  
+  .red-snackbar {
+    background-color: red!important;
+    color: lightgoldenrodyellow;
+  }
+  a{
+    color: #FFEB3B;
+    font-size: 14px!important;
+    text-decoration: none;
+    background-color: transparent;
+    text-decoration: underline;
+  }
+
+  .logoInLogin {
+    position: relative;
+    top: 11%;
+    left: 2%;
+    width: 60px;
+ 
+  }
+  .errorColor{
+    color: #FFC107;
+    font-size: 12px;
+
+  }
+  mat-form-field.mat-form-field{
+    font-size: 12px!important;
+    color: white!important;;
+}
+.mat-select-value {
+    color: rgb(249 243 243 / 87%)!important;
+}
+  mat-form-field.mat-form-field {
+    font-size: 12px;
+  }

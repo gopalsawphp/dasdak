@@ -1,0 +1,168 @@
+
+
+    <!-- Outer Row -->
+    <div class="row">
+      <div class="col-xl-10 col-lg-12 col-md-9">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="p-5">
+                  <div class="text-center">
+                    <img class="logoInLogin" src="../assets/images/DasdakCodingTestLogo.png">
+                    <h1 class="h4 text-gray-900 mb-4 color-white"> DASDAK SIGNIN !</h1>
+                  </div>
+                  <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()" novalidate>
+                    <div class="row">
+                       <div class="col-md-6">
+                         <span >
+                          <mat-form-field style="width: 100%;" >
+                            <input matInput placeholder="First Name" formControlName="fname">
+                              <mat-error *ngIf="!signUpForm.controls.fname.valid && signUpForm.controls['fname'].touched">
+                                <span class="errorColor" *ngIf="signUpForm.controls.fname.errors?.required">
+                                  First Name is required.
+                              </span>
+                                </mat-error>
+                          </mat-form-field>
+                        </span>
+                       </div>
+                       <div class="col-md-6">
+                         <span>
+                          <mat-form-field style="width: 100%;">
+                            <input matInput placeholder="Last Name" formControlName="lname">
+                              <mat-error *ngIf="!signUpForm.controls.lname.valid && signUpForm.controls['lname'].touched">
+                                <span class="errorColor" *ngIf="signUpForm.controls.lname.errors?.required">
+                                  Last Name is required.
+                              </span>
+                                </mat-error>
+                          </mat-form-field>
+                        </span>
+                       </div>
+                    </div>
+              
+              
+                    <div class="row" class="p2" stlle=" margin-bottom: 52px !important;">
+                      <mat-form-field style="width: 100%;">
+                        <mat-select placeholder="Select  Genger Type"  formControlName="gender">
+                          <mat-option>None</mat-option>
+                          <mat-option *ngFor="let gender of genderObj"  [value]="gender.value">{{gender.name}}</mat-option>
+                        </mat-select>
+                          <mat-error  *ngIf="!signUpForm.controls.gender.valid && signUpForm.controls['gender'].touched">
+                              <span class="errorColor" *ngIf="signUpForm.controls.gender.errors?.required">
+                              Gender  type  is required.
+                              </span>
+                            </mat-error>
+                          </mat-form-field>
+                        
+                    </div>
+              
+              
+              
+                   <div class="row"  class="p2">
+                     <mat-form-field style="width: 100%;">
+                       <input matInput placeholder="Email Id" (focusout)="checkEmail($event.target.value)"
+                       formControlName="emailid">
+                         <mat-error *ngIf="!signUpForm.controls.emailid.valid && signUpForm.controls['emailid'].touched">
+                           <span class="errorColor" *ngIf="signUpForm.controls.emailid.errors?.required">
+                             Email Id is required.
+                         </span>
+              
+                         <span class="errorColor" *ngIf="signUpForm.controls.emailid.errors?.email">
+                             Email Id must be entered valid.
+                         </span>
+                           </mat-error>
+                     </mat-form-field>
+              
+                   </div>
+              
+              
+              
+              
+                   <div class="row"  class="p2">
+                    <mat-form-field style="width: 100%;">
+                      <input matInput placeholder="Contact No." (focusout)="checkContact($event.target.value)"  formControlName="cont">
+                          <mat-error *ngIf="!signUpForm.controls.cont.valid && signUpForm.controls['cont'].touched">
+                            <span class="errorColor" *ngIf="signUpForm.controls.cont.errors?.required">
+                                Contact No.  is required.
+                            </span>
+              
+                            <span class="errorColor" *ngIf="signUpForm.controls.cont.errors?.number">
+                                Contact No. should be only numbers.
+                            </span>
+                            <span class="errorColor" *ngIf="signUpForm.controls.cont.errors?.maxlength">
+                                Contact No. should be maximum 12 numbers.
+                            </span>
+                            
+                          </mat-error>
+              
+                    </mat-form-field>
+              
+                  </div>
+              
+              
+              
+              
+                  <div class="row"  class="p2">
+                    <mat-form-field style="width: 100%;">
+                      <input matInput pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password"  formControlName="pass"  placeholder="Password">
+                          <mat-error  *ngIf="!signUpForm.controls.pass.valid && signUpForm.controls['pass'].touched">
+                            <span class="errorColor" *ngIf="signUpForm.controls.pass.errors?.required">
+                              Password is required.
+                          </span>
+              
+                          <span class="errorColor" *ngIf="signUpForm.controls.pass.errors?.pattern">
+                              Must contain at least one number, one upper and lowercase & More than 8 characters
+                          </span>
+                          </mat-error>
+              
+                    </mat-form-field>
+              
+                  </div>
+              
+              
+              
+              
+                  <div class="row"  class="p2">
+                    <mat-form-field style="width: 100%;">
+                  
+                      <input matInput type="password"  formControlName="cpass"  placeholder="Confirm Password">
+                          <mat-error *ngIf="!signUpForm.controls.cpass.valid && signUpForm.controls['cpass'].touched">
+                            <span class="errorColor" *ngIf="signUpForm.controls.cpass.errors?.equalTo">
+                              Password and Confirm Password is not  match.
+                           </span>
+                          </mat-error>
+              
+                    </mat-form-field>
+              
+                  </div> 
+              
+                     <div style="clear:both"></div>
+              
+                  
+              
+                     <div  style="margin-top:10px;" class="form-group" *ngIf="eEmail">       
+                         <div class="alert alert-danger existMessage" role="alert"> Email Id already exists.</div>
+                     </div>
+              
+              
+                     
+               
+                     <div style="margin-top:10px;margin-bottom:10px" class="form-group" *ngIf="eContact">       
+                         <div class="alert alert-danger existMessage" role="alert"> Contact No. already exists.</div>
+                     </div>
+              
+                    
+              
+                       <div class="form-group text-center">       
+                           <button [disabled]="!signUpForm.valid || eEmail || eContact" type="submit" style="margin-top: 15px!important;" mat-flat-button class="site-button" > {{buttonText}}</button>
+                       </div>
+                   </form>
+                  <hr>
+                
+                  <div class="text-center">
+                    <a class="small" routerLink="/signin">If ypu have already SignUp click for SignIn</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+    

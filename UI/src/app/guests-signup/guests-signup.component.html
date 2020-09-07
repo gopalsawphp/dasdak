@@ -1,0 +1,233 @@
+<header>
+  <!-- <nav>
+    <img class="logo" src="../assets/images/DasdakCodingTestLogo.png">
+  </nav> -->
+</header>
+<main>
+
+  <section>
+    <div class="row">
+      <div class="col-md-6 custom-col-right mobile-screen">
+        <img class="logo" src="../assets/images/DasdakCodingTestLogo.png">
+        <img class="player-image" src="../assets/images/DasdakCodingTestPlayerImage.png">
+      </div>
+      
+      <div class="col-md-6 custom-col-left">
+          <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()" novalidate>
+          <div>
+            <div class="main-container">
+              <div>
+                <h2 class="site-subheading">{{siteSubHeading}}</h2>
+              </div>
+              <div>
+                <h1 class="site-mainheading remove-margin-bottom">{{siteMainHeading}}</h1>
+              </div>
+              <div *ngIf="welcomePage">
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field appearance="standard" class="width-100">
+                      <mat-label>First Name <sup class="require"></sup></mat-label>
+                      <input formControlName="firstname" matInput placeholder="First Name">
+                      <mat-error *ngIf="!signUpForm.controls.firstname.valid && signUpForm.controls['firstname'].touched">
+                        <span class="errorColor" *ngIf="signUpForm.controls.firstname.errors?.required">
+                          First Name is required.
+                      </span>
+                     
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="standard" class="width-100">
+                      <mat-label>  Last Name <sup class="require"></sup></mat-label>
+                      <input formControlName="lastname" matInput placeholder="Last Name">
+                      <mat-error *ngIf="!signUpForm.controls.lastname.valid && signUpForm.controls['lastname'].touched">
+                        <span class="errorColor" *ngIf="signUpForm.controls.lastname.errors?.required">
+                          Last Name is required.
+                      </span>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field appearance="standard" class="width-100">
+                      <mat-label>Email <sup class="require"></sup></mat-label>
+                      <input formControlName="main_email" matInput placeholder="E-mail" (focusout)="checkEmail($event.target.value)">
+                      <mat-error *ngIf="!signUpForm.controls.main_email.valid && signUpForm.controls['main_email'].touched">
+                        <span class="errorColor" *ngIf="signUpForm.controls.main_email.errors?.required">
+                         E-mail is required.
+                      </span>
+                      <span class="errorColor" *ngIf="signUpForm.controls.main_email.errors?.email">
+                        E-mail must be entered valid.
+                    </span>
+                        </mat-error>
+                       
+                    </mat-form-field>
+                    <span class="errorColor" *ngIf="eEmail">
+                      E-mail already exists.
+                  </span>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="standard"  class="width-100">
+                      <mat-label>Zip Code <sup class="require"></sup></mat-label>
+                      <input matInput placeholder="Zip Code" formControlName="zipcode">
+                      <mat-error *ngIf="!signUpForm.controls.zipcode.valid && signUpForm.controls['zipcode'].touched">
+                        <span class="errorColor" *ngIf="signUpForm.controls.zipcode.errors?.required">
+                          Zip Code is required.
+                      </span>
+                      <span class="errorColor" *ngIf="signUpForm.controls.zipcode.errors?.number">
+                        Zip Code should be only numbers.
+                    </span>
+                    <span class="errorColor" *ngIf="signUpForm.controls.zipcode.errors?.maxlength">
+                      Zip Code should be maximum 6 numbers.
+                    </span>
+                        </mat-error>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field appearance="standard" class="width-100">
+                      <mat-label>No. of Guests</mat-label>
+                      <mat-select formControlName="guests" style="color: rgb(249 243 243 / 87%)!important;">
+                        <mat-option value="option">Option</mat-option>
+                        <mat-option [value]="noguest" *ngFor="let noguest of guests">{{noguest}}</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="checkbox-container">
+                  <div class="row">
+                    <div class="col-md-12 margin-top-15" formArrayName="options" *ngFor="let option of optionsFormArray.controls; let i = index">
+                      <mat-checkbox [formControlName]="i"><span class="checkbox-label">{{checkboxValue[i].value}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                </div>
+
+               
+             
+              </div>
+            <div *ngIf="thankYouPage">
+                <div>
+                  <div class="row">
+                    <div class="col-md-12 text-center">
+                      <div class="thank-you-message-container">
+                        <span class="text-uppercase color-white">Thank You For Signing Up!</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="text-center guest-container">
+                        <span class="guest-title color-white">Guest</span><br>
+                      </div>
+                      <div class="text-center guest-container" *ngFor="let gusetobj of displayDataObjectGuest">
+                        <span class="guest-name color-white">{{gusetobj.firstname}} &nbsp; {{gusetobj.lastname}}</span><br>
+                        <span class="guest-email">{{gusetobj.email}}</span><br>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+               <div class="row">
+                <div class="col-md-12 text-center">
+                  <span class="font-size-12 color-white">{{siteInvitationMessage}}</span>
+                </div>
+              </div> 
+              <div>
+
+
+
+                <div>
+                 
+                    <div class="row" *ngFor="let friend of addedFriend().controls; let i=index" [formGroup]="friend">
+                      <div class="col-md-3">
+                        <mat-form-field appearance="standard" class="width-100">
+                          <mat-label>First Name</mat-label>
+                          <input formControlName="firstname" matInput placeholder="First Name">
+                          <mat-error *ngIf="!friend.controls.firstname.valid && friend.controls['firstname'].touched">
+                            <span class="errorColor" *ngIf="friend.controls.firstname.errors?.required">
+                              First Name is required.
+                          </span>
+                            </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-3">
+                        <mat-form-field appearance="standard" class="width-100">
+                          <mat-label>Last Name</mat-label>
+                          <input formControlName="lastname" matInput placeholder="Last Name">
+                          <mat-error *ngIf="!friend.controls.lastname.valid && friend.controls['lastname'].touched">
+                            <span class="errorColor" *ngIf="friend.controls.lastname.errors?.required">
+                              Last Name is required.
+                          </span>
+                            </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-3">
+                        <mat-form-field appearance="standard" class="width-100">
+                          <mat-label>Email</mat-label>
+                          <input formControlName="email" matInput placeholder="Email">
+                          <mat-error *ngIf="!friend.controls.email.valid && friend.controls['email'].touched">
+                            <span class="errorColor" *ngIf="friend.controls.email.errors?.required">
+                             E-mail is required.
+                          </span>
+                          <span class="errorColor" *ngIf="friend.controls.email.errors?.email">
+                            E-mail must be entered valid.
+                        </span>
+                            </mat-error>
+                        </mat-form-field>
+                      </div>
+                      <div class="col-md-3 close-button-padding">
+                        <button (click)="removeFriend(i)" mat-icon-button
+                          aria-label="Example icon button with a vertical three dot icon">
+                          <mat-icon class="mat-icon-close">close</mat-icon>
+                        </button>
+                      </div>
+                    </div>
+                  
+                </div>
+
+
+
+              </div>
+
+                  
+
+
+              <div class="button-container">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <button (click)="addFriend()"  [disabled]="!signUpForm.valid || eEmail" mat-flat-button class="site-button ">
+                      <mat-icon>add</mat-icon>&nbsp;Add Friends
+                    </button>
+                   
+                    <button mat-flat-button class="site-button" [disabled]="!signUpForm.valid || eEmail" type="submit"> {{buttonSubmit}}</button>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="row">
+                  <div class="col-md-12 text-center important-message">
+                    <span class="font-size-10 color-white">{{importantMessage}}</span>&nbsp;<a
+                      class="font-size-10 site-hyperlink color-white">{{siteToRedirect}}</a>
+                  </div>
+                </div>
+                <div class="row margin-top-15">
+                  <div class="col-md-12 text-center important-message">
+                    <span class="font-size-10 color-white">{{importantNotice}}</span>&nbsp;<a
+                      class="font-size-10 site-hyperlink text-uppercase color-white">{{siteToRedirectForNotice}}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6 custom-col-right web-screen">
+        <img class="logo" src="../assets/images/DasdakCodingTestLogo.png">
+        <img class="player-image" src="../assets/images/DasdakCodingTestPlayerImage.png">
+      </div>
+    </div>
+  </section>
+</main>

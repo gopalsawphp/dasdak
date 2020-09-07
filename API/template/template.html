@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<title></title>
+
+<head>
+<style>
+    .container{
+    width:32%!important;
+    margin:0px auto;
+    }
+    .img-size{
+        width: 90px!important;
+        height: 90px!important;
+        margin-left:10px!important;
+        margin-bottom:8px!important;
+    }
+    .text-center{
+        text-align: center!important;
+    }
+    .tr-top-margin{
+       margin-top:20px!important;
+    }
+    .guest-title{
+         text-align: center;font-size:16px;font-weight: 500;color:rgb(104, 3, 3) ;
+         text-decoration: underline;
+         text-decoration-color: rgb(104, 3, 3) ;;
+     }
+
+</style>
+</head>
+
+<body style="font-size:12px;font-family: 'Segoe UI', 'Roboto', arial, sans-serif; margin-top:0px!important;">
+  
+      <div class="container">
+            <table style="width:100%">
+                     <tr>
+                        <td colspan="2"><img src="{{EmailHeader}}" style="width: 95%;"></td> 
+                     </tr>
+                     <tr>
+                        <td colspan="2" style="text-align: center;font-size:16px;font-weight: 500;color:rgb(104, 3, 3)">Gopal Saw</td> 
+                     </tr>
+                     <tr class="tr-top-margin">
+                        <td  colspan="2" class="text-center">
+                            <img src="{{PepsiGraphic}}" class="img-size" style="margin-right: 15px;">
+                            <img src="{{Barcode}}" class="img-size">
+                        </td> 
+                     </tr>
+
+                     <tr class="tr-top-margin">
+                        <td  colspan="2" class="text-center">
+                           <span class="guest-title">GUEST BARCODES</span>
+                        </td> 
+                     </tr>
+
+                     <tr class="tr-top-margin">
+                        <td  colspan="2" class="text-center">
+                            {{#cusData}}
+                            <img src="{{Barcode}}" class="img-size ">
+                            {{/cusData}}
+                        </td> 
+                     </tr>
+
+                     
+                     <tr>
+                        <td  colspan="2" class="text-center">
+                            <img src="{{EmailBody1}}" style="width: 95%;">
+                        </td> 
+                     </tr>
+
+                     <tr>
+                        <td  colspan="2" class="text-center">
+                            <img src="{{EmailBody2}}" style="width: 95%;">
+                        </td> 
+                     </tr>
+                     <tr>
+                        <td  colspan="2" class="text-center">
+                            <img src="{{EmailBody3}}" style="width: 95%;">
+                        </td> 
+                     </tr>
+                     <tr>
+                        <td  colspan="2" class="text-center">
+                            <img src="{{EmailBody4}}" style="width: 95%;">
+                        </td> 
+                     </tr>
+            </table> 
+        </div>
+    
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<div class="row"> 
+    <div class="col-md-12">
+                
+      <mat-card style="border-right: solid 1px #e8e8e8;">
+       
+        <div class="col-12 col-md-8 col-xs-12 col-lg-8" style="position:relative;margin: 0px auto;">
+                <div class=""  *ngIf="msuccess">
+                <div style="text-align: center;font-family: Lato,sans-serif!important;
+                letter-spacing: 1px;"><img src="../../assets/img/correct.png" height="55px" width="55px"> 
+              <br/>
+              <div class="success">Your account has been activated, you can now signIn.</div>
+                </div>
+              </div>
+    
+    
+    
+              <div class=""  *ngIf="Tinvalid">
+                  <div style="text-align: center;
+               font-family: Lato,sans-serif!important;
+                  letter-spacing: 1px;"><img src="../../assets/img/error.png" height="45px" width="45px"> 
+                <br/>
+                <div class="error">The url is either invalid or you already have activated your account.</div>
+                  </div>
+                </div>
+    <br/>
+                <div class="text-center">       
+                  <a routerLink="/signin" style="font-size: 18px;color: blue;text-decoration: underline;">Click here to  Sign In</a>
+              </div>
+        
+          
+    
+            </div>
+
+      </mat-card>
+
+    </div>
+  </div>

@@ -1,0 +1,72 @@
+/* You can add global styles to this file, and also import other style files */
+@import "../src/assets/css/dasdak.css";
+
+html,
+body {
+  height: 100% !important;
+  background-image: url("./assets/images/DasdakCodingTestBackground.jpg");
+  background-size: 100% 100% !important;
+  background-repeat: no-repeat !important;
+  background-size: cover;
+  background-attachment: fixed;
+overflow-x: hidden!important;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.green-snackbar {
+    background-color: green;
+    color: lightgoldenrodyellow;
+  }
+  
+  .red-snackbar {
+    background-color: red;
+    color: lightgoldenrodyellow;
+  }
+.errorColor{
+  color: red;
+}
+
+.mat-select-value {
+  color: rgba(252, 252, 252, 0.87);
+}
+  .mobile-screen{
+    display: none;
+  }
+  .web-screen{
+    display: block;
+  }
+  
+  @media  screen and (max-width: 600px) {
+    .player-image {
+      height: 27rem;
+      position: unset;
+  }
+  .mobile-screen{
+    display: block;
+  }
+  .web-screen{
+    display: none;
+  }
+  .logo{
+    position: absolute;
+    margin-top: 1rem;
+    margin-left: -2rem;
+    transform: scale(0.5);
+    top: 69%;
+    left: 19%;
+}
+.mat-icon {
+  line-height: 0px!important;
+}
+.mat-icon {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 3px!important;
+  width: 24px;
+}
+  }
